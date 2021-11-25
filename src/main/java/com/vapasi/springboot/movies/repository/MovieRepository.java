@@ -4,16 +4,24 @@ import com.vapasi.springboot.movies.dto.Movie;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Repository
 public class MovieRepository {
 
-    List<Movie> movieList=new ArrayList<>();
+    List<Movie> movieList=new ArrayList<Movie>(Arrays.asList(
+            new Movie(1,"3 Idiots","Amir Khan","Rajkumar Hirani"),
+            new Movie(2,"Lagan","Amir Khan","Ashutosh Gowarikar")));
 
     public List<Movie> getMovieList(){
-        movieList.add(new Movie("3 Idiots","Amir Khan","Rajkumar Hirani"));
-        movieList.add(new Movie("Lagan","Amir Khan","Ashutosh Gowarikar"));
         return movieList;
+    }
+
+    public Movie saveMovie(Movie movie) {
+        int movieId=movieList.get(movieList.size()-1).getId()+1;
+        Movie movieToBeAdded= new Movie(movieId,movie.getName(), movie.getActor(), movie.getDirector());
+        movieList.add(movieToBeAdded);
+        return movieToBeAdded;
     }
 }

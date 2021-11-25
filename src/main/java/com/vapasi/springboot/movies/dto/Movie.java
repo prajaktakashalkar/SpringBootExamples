@@ -1,25 +1,47 @@
 package com.vapasi.springboot.movies.dto;
 
-public class Movie {
-    String Name;
-    String Actor;
-    String Director;
+import java.util.Objects;
 
-    public Movie(String name, String actor, String director) {
-        Name = name;
-        Actor = actor;
-        Director = director;
+public class Movie {
+    int id;
+    String name;
+    String actor;
+    String director;
+
+
+    public Movie(int id,String name, String actor, String director) {
+        this.name = name;
+        this.actor = actor;
+        this.director = director;
+        this.id =id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public String getActor() {
-        return Actor;
+        return actor;
     }
 
     public String getDirector() {
-        return Director;
+        return director;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return id == movie.id && Objects.equals(name, movie.name) && Objects.equals(actor, movie.actor) && Objects.equals(director, movie.director);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, actor, director);
     }
 }
