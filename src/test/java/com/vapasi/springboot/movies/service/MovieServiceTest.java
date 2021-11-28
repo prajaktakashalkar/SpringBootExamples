@@ -34,4 +34,13 @@ public class MovieServiceTest {
         assertEquals(movieList,allMovies);
 
     }
+
+    @Test
+    void shouldUpdateMovie(){
+        Movie updatedMovie=new Movie(1,"vapasi","developers","vapasi");
+        when(movieRepository.updateMovie(updatedMovie)).thenReturn(updatedMovie);
+        Movie movie=movieService.updateMovie(updatedMovie);
+        verify(movieRepository,times(1)).updateMovie(updatedMovie);
+        assertEquals(updatedMovie,movie);
+    }
 }

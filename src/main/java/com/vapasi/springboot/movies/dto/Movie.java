@@ -16,6 +16,22 @@ public class Movie {
         this.id =id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setActor(String actor) {
+        this.actor = actor;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
     public String getName() {
         return name;
     }

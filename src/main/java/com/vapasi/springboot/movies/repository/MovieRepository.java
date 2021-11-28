@@ -24,4 +24,13 @@ public class MovieRepository {
         movieList.add(movieToBeAdded);
         return movieToBeAdded;
     }
+
+    public Movie updateMovie(Movie updatedMovie) {
+        //int movieId=updatedMovie.getId();
+        Movie movieToBeUpdated= movieList.stream().filter(movie -> movie.getId()==updatedMovie.getId()).findAny().get();
+        movieToBeUpdated.setName(updatedMovie.getName());
+        movieToBeUpdated.setActor(updatedMovie.getActor());
+        movieToBeUpdated.setDirector(updatedMovie.getDirector());
+        return movieToBeUpdated;
+    }
 }

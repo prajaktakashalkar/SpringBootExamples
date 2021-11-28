@@ -30,4 +30,10 @@ public class MovieController {
         Movie movieWithId = movieService.saveMovie(movie);
         return new ResponseEntity<Movie>(movieWithId,HttpStatus.CREATED);
     }
+
+    @PutMapping("/")
+    public ResponseEntity<Movie> updateMovie(@RequestBody Movie movie){
+        Movie updatedMovie=movieService.updateMovie(movie);
+        return new ResponseEntity<>(updatedMovie,HttpStatus.ACCEPTED);
+    }
 }
